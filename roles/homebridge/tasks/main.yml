@@ -1,0 +1,8 @@
+---
+- name: install homebridge packages
+  npm: name={{ item }} state=present global=yes
+  with_items:
+    - homebridge
+    - homebridge-platform-wemo
+    - homebridge-nest
+    - homebridge-sonos

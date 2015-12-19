@@ -1,0 +1,35 @@
+---
+- name: add SSH keys for plex apt
+  shell: wget -O - https://dev2day.de/pms/dev2day-pms.gpg.key | sudo apt-key add -
+
+- name: add plex package source
+  shell: echo "deb https://dev2day.de/pms/ jessie main" | sudo tee /etc/apt/sources.list.d/pms.list
+
+- name: update apt
+  apt: update_cache=yes
+
+- name: install Plex and dependencies
+  apt: name={{ item }} state=present
+  with_items:
+    - libexpat1
+    - apt-transport-https
+    - plexmediaserver
+
+- name: copy bin script for plex
+  copy: >
+    dest=/usr/local/bin/plexmediaserver
+    src=binscript
+
+- name: make bin script executable
+  file: path=/usr/local/bin/plexmediaserver state=touch mode="u+x"
+
+- name: copy init script for plex
+  copy: >
+    dest=/etc/init.d/plexmediaserver
+    src=initscript
+
+- name: make init script executable
+  file: path=/etc/init.d/plexmediaserver state=touch mode="u+x"
+
+- name: update rc to start plex automatically
+  shell: update-rc.d plexmediaserver defaults

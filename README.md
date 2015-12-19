@@ -11,6 +11,13 @@ While this will work just fine, note that a Banana Pi is probably not fit for tr
 
 ### Set up
 
+Before running this install, there are two prereqs:
+
+1. Have installed the Banana Pie Media Server [OS image](http://www.htpcguides.com/banana-pi-pro-home-media-server-installer-image/)
+2. Set environment vars for sensitive info (don't want to put your Nest password on a public repo...):
+    - `NEST_LOGIN`
+    - `NEST_PASSWORD`
+
 To install, all you need to do is run `bootstrap.sh` remotely. It will install some pre-requisites (gcc, git, and [Ansible](http://docs.ansible.com/)) and will then clone this repo locally (by default it clones into `~/.setup`) and run the playbook:
 
     $ curl -fsSL https://raw.githubusercontent.com/zacs/homebox/master/bootstrap.sh | sh
