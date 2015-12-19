@@ -1,18 +1,19 @@
-# Machine setup [![Build Status](https://travis-ci.org/zacs/setup.svg)](https://travis-ci.org/zacs/setup)
+# Home Server Setup [![Build Status](https://travis-ci.org/zacs/homebox.svg)](https://travis-ci.org/zacs/homebox)
 
-This is my personal machine setup.
+This project automatically installs and configures the software needed to run a [very] lightweight home automation and media server.
 
-It's largely set up for my particular needs, but by using roles (and swapping
-files, etc) it is quite easy to customize. Remove as much as possible and
-build up, making changes as you go, so it fits your needs. The only things
-you need to change are in `roles`.
+Specifically, this will get you up and running on a $40 Banana Pi with:
+
+- Plex Media Server
+- Homebridge
+
+While this will work just fine, note that a Banana Pi is probably not fit for transcoding with Plex, so don't expect much to work.
 
 ### Set up
 
-To install, all you need to do is run `bootstrap.sh` remotely. It will install some pre-requisites (gcc,
-[Homebrew](http://brew.sh/), git, and [Ansible](http://docs.ansible.com/)) and will then clone this repo locally (by default it clones into `~/.setup`) and run the playbook:
+To install, all you need to do is run `bootstrap.sh` remotely. It will install some pre-requisites (gcc, git, and [Ansible](http://docs.ansible.com/)) and will then clone this repo locally (by default it clones into `~/.setup`) and run the playbook:
 
-    $ curl -fsSL https://raw.githubusercontent.com/zacs/setup/master/bootstrap.sh | sh
+    $ curl -fsSL https://raw.githubusercontent.com/zacs/homebox/master/bootstrap.sh | sh
 
 If you prefer not to run code remotely, you just need to clone the repo down wherever you would like, and run:
 
@@ -28,18 +29,8 @@ take some time building packages.
 
 ### Why?
 
-Flattening and restarting a dev machine is daunting insofar as the time it
-takes, as well as the potential to forget things. Now I can wipe a machine
-and don't need to worry about the consequences.
-
-GitHub's Boxen looked great but overkill, and I wanted to learn Ansible,
-so here we are.
-
-### Credits
-
-The original inspiration was @bennylope's [setup](https://github.com/bennylope/macbook-configuration),
-though I've deviated quite a bit (and added continuous integration testing).
+I already have a dev machine setup like this, so `homebox` is just a pared-down fork. Since I'm new to home automation, my guess is I'll be flattening by Banana Pie a lot, and no one wants to spend hours `chmod`ing a bunch of crap, etc.
 
 ### License
 
-Public domain. Party.
+MIT License
