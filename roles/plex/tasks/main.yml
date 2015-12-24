@@ -3,9 +3,7 @@
   shell: wget -O - https://dev2day.de/pms/dev2day-pms.gpg.key | sudo apt-key add -
 
 - name: add plex package source
-  shell: echo "deb https://dev2day.de/pms/ jessie main" | sudo tee /etc/apt/sources.list.d/pms.list
-
-- shell: ldd --version
+  shell: echo "deb https://dev2day.de/pms/ wheezy main" | sudo tee /etc/apt/sources.list.d/pms.list
 
 - name: update apt
   apt: update_cache=yes
