@@ -2,10 +2,14 @@
 - name: update apt
   apt: update_cache=yes
 
+- name: clean up node install
+  shell: curl -sL https://deb.nodesource.com/setup | bash -
+
 - name: install core tools
   apt: name={{ item }} state=present install_recommends=yes
   with_items:
     - build-essential
+    - libavahi-compat-libdnssd-dev
     - nodejs
     - npm
     - wget
