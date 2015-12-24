@@ -11,5 +11,4 @@
     - build-essential
     - libavahi-compat-libdnssd-dev
     - nodejs
-    - npm
     - wget
