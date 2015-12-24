@@ -5,6 +5,8 @@
 - name: add plex package source
   shell: echo "deb https://dev2day.de/pms/ jessie main" | sudo tee /etc/apt/sources.list.d/pms.list
 
+- shell: ldd --version
+
 - name: update apt
   apt: update_cache=yes
 
