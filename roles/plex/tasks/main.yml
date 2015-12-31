@@ -28,7 +28,7 @@
     src=binscript
 
 - name: make bin script executable
-  file: path=/usr/local/bin/plexmediaserver state=touch mode="u+x"
+  file: path=/usr/local/bin/plexmediaserver state=touch mode=0774
 
 - name: copy init script for plex
   copy: >
@@ -36,7 +36,7 @@
     src=initscript
 
 - name: make init script executable
-  file: path=/etc/init.d/plexmediaserver state=touch mode="u+x"
+  file: path=/etc/init.d/plexmediaserver state=touch mode=0774
 
 - name: update rc to start plex automatically
   shell: update-rc.d plexmediaserver defaults
