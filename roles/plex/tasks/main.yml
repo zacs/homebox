@@ -4,6 +4,7 @@
 
 - name: add plex repo
   apt_repository: repo='deb https://dev2day.de/pms wheezy main' state=present
+  when: ansible_env.CI is not defined
 
 - name: update apt
   apt: update_cache=yes
