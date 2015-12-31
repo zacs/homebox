@@ -3,7 +3,7 @@
   shell: wget -O - https://dev2day.de/pms/dev2day-pms.gpg.key | sudo apt-key add -
 
 - name: add plex repo
-  command: add-apt-repository "deb https://dev2day.de/pms/ wheezy main"
+  apt_repository: repo='deb https://dev2day.de/pms wheezy main' state=present
 
 - name: update apt
   apt: update_cache=yes
