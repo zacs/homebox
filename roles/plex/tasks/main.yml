@@ -7,13 +7,19 @@
 
 - name: update apt
   apt: update_cache=yes
+  when: ansible_env.CI is not defined
 
-- name: install Plex and dependencies
+- name: install dependencies
   apt: name={{ item }} state=present
   with_items:
     - libexpat1
     - apt-transport-https
+
+- name: install Plex
+  apt: name={{ item }} state=present
+  with_items:
     - plexmediaserver
+  when: ansible_env.CI is not defined
 
 - name: copy bin script for plex
   copy: >
