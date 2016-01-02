@@ -40,3 +40,19 @@
 
 - name: update rc to start plex automatically
   shell: update-rc.d plexmediaserver defaults
+
+- name: download IPTV plex plugin
+  unarchive: src=https://github.com/Cigaras/IPTV.bundle/archive/master.zip dest=~Library/Application Support/Plex Media Server/Plug-ins
+  when: ansible_os_family == 'Darwin'
+
+- name: download IPTV plex plugin
+  unarchive: src=https://github.com/Cigaras/IPTV.bundle/archive/master.zip dest=/usr/lib/plexmediaserver/Resources/Plug-ins
+  when: ansible_distribution == 'Ubuntu'
+
+- name: rename IPTV bundle
+  command: mv ~Library/Application Support/Plex Media Server/Plug-ins/IPTV.bundle-master to ~Library/Application Support/Plex Media Server/Plug-ins/IPTV.bundle
+  when: ansible_os_family == 'Darwin'
+
+- name: rename IPTV bundle
+  command: mv /usr/lib/plexmediaserver/Resources/Plug-ins/IPTV.bundle-master /usr/lib/plexmediaserver/Resources/Plug-ins/IPTV.bundle
+  when: ansible_distribution == 'Ubuntu'
