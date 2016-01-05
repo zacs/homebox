@@ -42,11 +42,11 @@
   shell: update-rc.d plexmediaserver defaults
 
 - name: download IPTV plex plugin
-  unarchive: url=https://github.com/Cigaras/IPTV.bundle/archive/master.zip dest=~Library/Application Support/Plex Media Server/Plug-ins
+  unarchive: src=https://github.com/Cigaras/IPTV.bundle/archive/master.zip dest=~Library/Application Support/Plex Media Server/Plug-ins
   when: ansible_os_family == 'Darwin'
 
 - name: download IPTV plex plugin
-  unarchive: url=https://github.com/Cigaras/IPTV.bundle/archive/master.zip dest=/usr/lib/plexmediaserver/Resources/Plug-ins
+  unarchive: src=https://github.com/Cigaras/IPTV.bundle/archive/master.zip dest=/usr/lib/plexmediaserver/Resources/Plug-ins
   when: ansible_distribution == 'Ubuntu'
 
 - name: rename IPTV bundle
