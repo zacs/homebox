@@ -22,29 +22,11 @@
     - plexmediaserver
   when: ansible_env.CI is not defined
 
-- name: copy bin script for plex
-  copy: >
-    dest=/usr/local/bin/plexmediaserver
-    src=binscript
-
-- name: make bin script executable
-  file: path=/usr/local/bin/plexmediaserver state=touch mode=0774
-
-- name: copy init script for plex
-  copy: >
-    dest=/etc/init.d/plexmediaserver
-    src=initscript
-
-- name: make init script executable
-  file: path=/etc/init.d/plexmediaserver state=touch mode=0774
-
-- name: update rc to start plex automatically
-  shell: update-rc.d plexmediaserver defaults
-
 - name: download IPTV plex plugin
   unarchive: copy=no src=https://github.com/Cigaras/IPTV.bundle/archive/master.zip dest=~Library/Application Support/Plex Media Server/Plug-ins
   when: ansible_os_family == 'Darwin'
 
+# dest is bad (docs for IPTV are incorrect) -- TODO: update to correct based on current install
 - name: download IPTV plex plugin
   unarchive: copy=no src=https://github.com/Cigaras/IPTV.bundle/archive/master.zip dest=/usr/lib/plexmediaserver/Resources/Plug-ins
   when: ansible_distribution == 'Ubuntu'
@@ -56,3 +38,7 @@
 - name: rename IPTV bundle
   command: mv /usr/lib/plexmediaserver/Resources/Plug-ins/IPTV.bundle-master /usr/lib/plexmediaserver/Resources/Plug-ins/IPTV.bundle
   when: ansible_distribution == 'Ubuntu'
+
+# TODO: update the m3u location to be a remote http link for easier updating (via dropbox)
+
+# TODO: create a media/movies/videos folder in ~ and add it as a library in plex via configs

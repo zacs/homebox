@@ -1,9 +1,0 @@
-language: ruby
-sudo: required
-os:
-  - linux
-before_install:
-  - sudo apt-get update -qq
-  - sudo apt-get install -y ansible -qq
-script:
-  - sudo ansible-playbook $TRAVIS_BUILD_DIR/local.yml -i $TRAVIS_BUILD_DIR/hosts --connection=local

@@ -1,4 +1,4 @@
-# Home Server Setup [![Build Status](https://travis-ci.org/zacs/homebox.svg)](https://travis-ci.org/zacs/homebox)
+# Home Server Setup
 
 This project automatically installs and configures the software needed to run a [very] lightweight home automation and media server.
 

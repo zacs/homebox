@@ -1,4 +1,6 @@
 ---
+# TODO add the weird ARM prereq for hombridge (see their wiki)
+
 - name: install homebridge packages
   npm: name={{ item }} state=present global=yes
   with_items:
@@ -6,3 +8,5 @@
     - homebridge-platform-wemo
     - homebridge-nest
     - homebridge-sonos
+
+# TODO add pre-done config file and copy over

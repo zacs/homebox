@@ -2,6 +2,8 @@
 - name: update apt
   apt: update_cache=yes
 
+# TODO get the node setup for 5.x and add the deb address (below may be sufficient)
+
 - name: clean up node install
   shell: curl -sL https://deb.nodesource.com/setup | bash -
 
