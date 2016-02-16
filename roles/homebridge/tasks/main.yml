@@ -1,6 +1,4 @@
 ---
-# TODO add the weird ARM prereq for hombridge (see their wiki)
-
 - name: install homebridge packages
   npm: name={{ item }} state=present global=yes
   with_items:
