@@ -1,58 +1,46 @@
 ---
-- name: add SSH keys for plex apt
-  shell: wget -O - https://dev2day.de/pms/dev2day-pms.gpg.key | sudo apt-key add -
+- name: update homebrew
+  command: brew update
+  when: ansible_os_family == 'Darwin'
 
-- name: add plex repo
-  apt_repository: repo='deb https://dev2day.de/pms wheezy main' state=present
-  when: ansible_env.CI is not defined
-
-- name: update apt
-  apt: update_cache=yes
-  when: ansible_env.CI is not defined
-
-- name: install dependencies
-  apt: name={{ item }} state=present
+- name: add taps
+  homebrew_tap: tap={{ item }} state=present
   with_items:
-    - libexpat1
-    - apt-transport-https
+    - caskroom/cask
+    - caskroom/versions
+  when: ansible_os_family == 'Darwin'
 
-- name: install Plex
-  apt: name={{ item }} state=present
+- name: install CLI tools (OSX)
+  homebrew: name={{ item }} state=present
   with_items:
-    - plexmediaserver
-  when: ansible_env.CI is not defined
+    - git
+    - brew-cask
+    - wget
+    - hub
+    - python
+    - node
+    - brew-gem
+    - brew-pip
+    - watchman
+    - ffmpeg
+    - youtube-dl
+    - zsh
+  when: ansible_os_family == 'Darwin'
 
-- name: copy bin script for plex
-  copy: >
-    dest=/usr/local/bin/plexmediaserver
-    src=binscript
-
-- name: make bin script executable
-  file: path=/usr/local/bin/plexmediaserver state=touch mode=0774
-
-- name: copy init script for plex
-  copy: >
-    dest=/etc/init.d/plexmediaserver
-    src=initscript
-
-- name: make init script executable
-  file: path=/etc/init.d/plexmediaserver state=touch mode=0774
-
-- name: update rc to start plex automatically
-  shell: update-rc.d plexmediaserver defaults
+- name: install binary casks
+  homebrew_cask: name={{ item }} state=present
+  with_items:
+    - beamer
+    - plex-media-server
 
 - name: download IPTV plex plugin
   unarchive: copy=no src=https://github.com/Cigaras/IPTV.bundle/archive/master.zip dest=~Library/Application Support/Plex Media Server/Plug-ins
   when: ansible_os_family == 'Darwin'
 
-- name: download IPTV plex plugin
-  unarchive: copy=no src=https://github.com/Cigaras/IPTV.bundle/archive/master.zip dest=/usr/lib/plexmediaserver/Resources/Plug-ins
-  when: ansible_distribution == 'Ubuntu'
-
 - name: rename IPTV bundle
   command: mv ~Library/Application Support/Plex Media Server/Plug-ins/IPTV.bundle-master to ~Library/Application Support/Plex Media Server/Plug-ins/IPTV.bundle
   when: ansible_os_family == 'Darwin'
 
-- name: rename IPTV bundle
-  command: mv /usr/lib/plexmediaserver/Resources/Plug-ins/IPTV.bundle-master /usr/lib/plexmediaserver/Resources/Plug-ins/IPTV.bundle
-  when: ansible_distribution == 'Ubuntu'
+# TODO: update the m3u location to be a remote http link for easier updating (via dropbox)
+
+# TODO: create a media/movies/videos folder in ~ and add it as a library in plex via configs

@@ -6,3 +6,5 @@
     - homebridge-platform-wemo
     - homebridge-nest
     - homebridge-sonos
+
+# TODO add pre-done config file and copy over

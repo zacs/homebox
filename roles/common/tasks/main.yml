@@ -1,14 +1,31 @@
 ---
-- name: update apt
-  apt: update_cache=yes
+- name: update homebrew
+  command: brew update
+  when: ansible_os_family == 'Darwin'
 
-- name: clean up node install
-  shell: curl -sL https://deb.nodesource.com/setup | bash -
-
-- name: install core tools
-  apt: name={{ item }} state=present install_recommends=yes
+- name: add taps
+  homebrew_tap: tap={{ item }} state=present
   with_items:
-    - build-essential
-    - libavahi-compat-libdnssd-dev
-    - nodejs
+    - caskroom/cask
+    - caskroom/versions
+  when: ansible_os_family == 'Darwin'
+
+- name: install CLI tools (OSX)
+  homebrew: name={{ item }} state=present
+  with_items:
+    - git
+    - brew-cask
     - wget
+    - python
+    - node
+    - watchman
+    - ffmpeg
+    - youtube-dl
+    - zsh
+  when: ansible_os_family == 'Darwin'
+
+- name: install binary casks
+  homebrew_cask: name={{ item }} state=present
+  with_items:
+    - beamer
+    - plex-media-server
