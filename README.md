@@ -13,8 +13,7 @@ While this will work just fine, note that a Banana Pi is probably not fit for tr
 
 Before running this install, there are two prereqs:
 
-1. Have installed the Banana Pie Media Server [OS image](http://www.htpcguides.com/banana-pi-pro-home-media-server-installer-image/)
-2. Set environment vars for sensitive info (don't want to put your Nest password on a public repo...):
+1. Set environment vars for sensitive info (don't want to put your Nest password on a public repo...):
     - `NEST_LOGIN`
     - `NEST_PASSWORD`
 
