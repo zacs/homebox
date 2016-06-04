@@ -34,11 +34,11 @@
     - plex-media-server
 
 - name: download IPTV plex plugin
-  unarchive: copy=no src=https://github.com/Cigaras/IPTV.bundle/archive/master.zip dest=~Library/Application Support/Plex Media Server/Plug-ins
+  unarchive: copy=no src=https://github.com/Cigaras/IPTV.bundle/archive/master.zip dest="~Library/Application Support/Plex Media Server/Plug-ins"
   when: ansible_os_family == 'Darwin'
 
 - name: rename IPTV bundle
-  command: mv ~Library/Application Support/Plex Media Server/Plug-ins/IPTV.bundle-master to ~Library/Application Support/Plex Media Server/Plug-ins/IPTV.bundle
+  command: mv ""~Library/Application Support/Plex Media Server/Plug-ins/IPTV.bundle-master" "~Library/Application Support/Plex Media Server/Plug-ins/IPTV.bundle"
   when: ansible_os_family == 'Darwin'
 
 # TODO: update the m3u location to be a remote http link for easier updating (via dropbox)
