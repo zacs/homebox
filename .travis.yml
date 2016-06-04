@@ -3,4 +3,5 @@ sudo: required
 os:
   - osx
 script:
+  - sh $TRAVIS_BUILD_DIR/bootstrap.sh
   - ansible-playbook $TRAVIS_BUILD_DIR/local.yml -i $TRAVIS_BUILD_DIR/hosts --connection=local
