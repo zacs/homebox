@@ -7,4 +7,7 @@
     - homebridge-nest
     - homebridge-sonos
 
-# TODO add pre-done config file and copy over
+- name: add Monokai XCode theme
+  copy: >
+    dest=~/Library/LaunchAgents/
+    src=com.homebox.runhomebridge.plist
