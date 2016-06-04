@@ -28,5 +28,6 @@
   homebrew_cask: name={{ item }} state=present
   with_items:
     - beamer
+    - caffeine
     - plex-media-server
     - transmission
