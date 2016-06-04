@@ -38,7 +38,7 @@
   when: ansible_os_family == 'Darwin'
 
 - name: rename IPTV bundle
-  command: mv ""~Library/Application Support/Plex Media Server/Plug-ins/IPTV.bundle-master" "~Library/Application Support/Plex Media Server/Plug-ins/IPTV.bundle"
+  command: mv "~Library/Application Support/Plex Media Server/Plug-ins/IPTV.bundle-master" "~Library/Application Support/Plex Media Server/Plug-ins/IPTV.bundle"
   when: ansible_os_family == 'Darwin'
 
 # TODO: update the m3u location to be a remote http link for easier updating (via dropbox)
