@@ -1,8 +1,8 @@
 # Home Server Setup
 
-This project automatically installs and configures the software needed to run a [very] lightweight home automation and media server.
+This project automatically installs and configures the software needed to run a lightweight home automation and media server. Useful if you have an old Mac lying around.
 
-Specifically, this will get you up and running on a $40 Banana Pi with:
+Specifically, this will get you up and with:
 
 - Plex Media Server
 - Homebridge
@@ -11,27 +11,14 @@ While this will work just fine, note that a Banana Pi is probably not fit for tr
 
 ### Set up
 
-Before running this install, there are two prereqs:
-
-1. Set environment vars for sensitive info (don't want to put your Nest password on a public repo...):
-    - `NEST_LOGIN`
-    - `NEST_PASSWORD`
-
-To install, all you need to do is run `bootstrap.sh` remotely. It will install some pre-requisites (gcc, git, and [Ansible](http://docs.ansible.com/)) and will then clone this repo locally (by default it clones into `~/.setup`) and run the playbook:
-
-    $ curl -fsSL https://raw.githubusercontent.com/zacs/homebox/master/bootstrap.sh | sh
-
-If you prefer not to run code remotely, you just need to clone the repo down wherever you would like, and run:
-
-    $ ./bootstrap.sh
+1. Clone this repo or [download](https://github.com/zacs/homebox/archive/master.zip) and unzip it.
+2. Edit the `config.json` file in the `roles/homebridge/files/` folder.
+3. Open Terminal and run the install script: `./bootstrap.sh`
 
 After installing the prerequisites this will run the `local` playbook
-for the first time. If for some reason `bootstrap.sh` barfs, you can run the playbook manually via:
+for the first time. If for some reason `bootstrap.sh` barfs, you can run the playbook manually via: `ansible-playbook local.yml -i hosts --ask-sudo-pass --connection=local`
 
-    $ ansible-playbook local.yml -i hosts --ask-sudo-pass --connection=local
-
-If it's your first time, go brew some coffee or tea because this will
-take some time building packages.
+If it's your first time, go brew some coffee or tea because this will take some time building packages.
 
 ### Notes
 

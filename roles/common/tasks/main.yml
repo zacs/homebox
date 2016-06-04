@@ -31,3 +31,6 @@
     - caffeine
     - plex-media-server
     - transmission
+
+- name: add Transmission to Login Items
+  script: defaults write loginwindow AutoLaunchedApplicationDictionary -array-add '{ "Path" = "~/Applications/Transmission.app"; "Hide" = 0; }'
