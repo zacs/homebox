@@ -49,3 +49,4 @@ fi
 
 # Run the playbook
 ansible-playbook $INSTALL_PATH/local.yml -i $INSTALL_PATH/hosts --ask-sudo-pass --connection=local
+
