@@ -10,16 +10,9 @@
   when: ansible_os_family == 'Darwin'
 
 - name: install CLI tools (OSX)
-  homebrew: name={{ item }} state=present
-  with_items:
-    - git
-    - brew-cask
-    - wget
-    - python
-    - node
-    - watchman
-    - ffmpeg
-    - youtube-dl
+  homebrew: 
+    name: ['git', 'wget', 'python', 'node', 'watchman', 'ffmpeg', 'youtube-dl']
+    state: present
   when: ansible_os_family == 'Darwin'
 
 - name: install binary casks
