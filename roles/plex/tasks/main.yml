@@ -1,4 +1,9 @@
 ---
+- name: create plex plugins folder
+  file:
+    path: ~Library/Application Support/Plex Media Server/Plug-ins
+    state: directory
+
 - name: download IPTV plex plugin
   unarchive: copy=no src=https://github.com/Cigaras/IPTV.bundle/archive/master.zip dest="~Library/Application Support/Plex Media Server/Plug-ins"
   when: ansible_os_family == 'Darwin'
