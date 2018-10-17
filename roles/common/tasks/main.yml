@@ -6,7 +6,6 @@
 - name: add taps
   homebrew_tap: tap={{ item }} state=present
   with_items:
-    - caskroom/cask
     - caskroom/versions
   when: ansible_os_family == 'Darwin'
 
@@ -21,7 +20,6 @@
     - watchman
     - ffmpeg
     - youtube-dl
-    - zsh
   when: ansible_os_family == 'Darwin'
 
 - name: install binary casks
@@ -30,7 +28,3 @@
     - beamer
     - caffeine
     - plex-media-server
-    - transmission
-
-- name: add Transmission to Login Items
-  command: defaults write loginwindow AutoLaunchedApplicationDictionary -array-add '{ "Path" = "~/Applications/Transmission.app"; "Hide" = 0; }'
