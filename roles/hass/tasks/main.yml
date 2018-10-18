@@ -2,6 +2,7 @@
 - name: install home assistant
   pip:
     name: homeassistant
+    executable: pip3
 
 - name: start hass on boot
   command: hass --script macos install
