@@ -1,8 +1,8 @@
 # Home Server Setup [![Build Status](https://travis-ci.org/zacs/homebox.svg)](https://travis-ci.org/zacs/homebox)
 
-This project automatically installs and configures the software needed to run a lightweight home automation and media server. Useful if you have an old Mac lying around.
+This project automatically installs and configures the software needed to run a home automation and media server. Useful if you have an old Mac lying around.
 
-Specifically, this will get you up and with:
+Specifically, this will get you up and running with:
 
 - Home Assistant
 - Plex Media Server
@@ -12,8 +12,7 @@ While this will work just fine, note that a Banana Pi is probably not fit for tr
 ### Set up
 
 1. Clone this repo or [download](https://github.com/zacs/homebox/archive/master.zip) and unzip it.
-2. Edit the `config.json` file in the `roles/homebridge/files/` folder.
-3. Open Terminal and run the install script: `./bootstrap.sh`
+2. Open Terminal and run the install script: `./bootstrap.sh`
 
 After installing the prerequisites this will run the `local` playbook for the first time. If for some reason `bootstrap.sh` barfs, you can run the playbook manually via: `ansible-playbook local.yml -i hosts --ask-sudo-pass --connection=local`
 
@@ -38,7 +37,7 @@ If using Plex with an AppleTV [this link](https://forums.plex.tv/discussion/1914
 
 ### Why?
 
-I already have a dev machine setup like this, so `homebox` is just a pared-down fork. Since I'm new to home automation, my guess is I'll be flattening by Banana Pie a lot, and no one wants to spend hours `chmod`ing a bunch of crap, etc.
+I already have a dev machine setup like this, so `homebox` is just a pared-down fork. No one wants to spend hours `chmod`ing a bunch of crap, etc.
 
 ### License
 

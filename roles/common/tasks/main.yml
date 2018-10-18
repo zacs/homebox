@@ -10,8 +10,8 @@
   when: ansible_os_family == 'Darwin'
 
 - name: install CLI tools (OSX)
-  homebrew: 
-    name: ['git', 'wget', 'python', 'node', 'watchman', 'ffmpeg', 'youtube-dl']
+  homebrew:
+    name: ['git', 'wget', 'python3', 'node', 'watchman', 'ffmpeg', 'youtube-dl']
     state: present
   when: ansible_os_family == 'Darwin'
 
@@ -21,3 +21,4 @@
     - beamer
     - caffeine
     - plex-media-server
+  when: ansible_os_family == 'Darwin'
