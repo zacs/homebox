@@ -11,3 +11,4 @@
   git:
     repo: https://github.com/zacs/s9t-hass.git
     dest: ~/.homeassistant
+    force: yes
