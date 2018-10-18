@@ -1,0 +1,12 @@
+---
+- name: install home assistant
+  pip:
+    name: homeassistant
+
+- name: start hass on boot
+  command: hass --script macos install
+
+- name: download s9t hass config
+  git:
+    repo: https://github.com/zacs/s9t-hass.git
+    dest: ~/.homeassistant
